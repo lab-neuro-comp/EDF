@@ -16,7 +16,7 @@ public class Run {
         System.out.println("25 celsius to fahrenheit:");
         System.out.println("  Ans: " + EDFUtil.map(25, 100, 0, 212, 32) + "F");
         System.out.println("--- # Reading EDF file");
-        EDF edf = new EDF("data\\HCT-4-23.edf");
+        EDF edf = new EDF("data\\edf\\HCT-4-23.edf");
         System.out.println("File: " + edf.getFile());
         System.out.println("Labels:");
         String[] labels = edf.getLabels();
@@ -29,7 +29,7 @@ public class Run {
         System.out.println("--- # Let's write something");
         System.out.println("-- " + edf.write());
         System.out.println("-- Writing to ASCII format");
-        try { edf.toSingleChannelAscii("data\\ECG.ascii", "ECG"); }
+        try { edf.toSingleChannelAscii("data\\edf\\ECG.ascii", "ECG"); }
         catch (Exception any) { System.out.println(any); }
         System.out.println("...");
     }
