@@ -50,8 +50,8 @@ public class EDFUtil
 
 	/**
 	 * Appends a byte array in another byte array
-	 * @param box  the array to contain the new byte
-	 * @param it   the bytes to be added
+	 * @param inlet  the array to contain the new byte
+	 * @param toAdd  the bytes to be added
 	 * @return the concatenated array
 	 */
 	public static byte[] insert(byte[] inlet, byte[] toAdd)

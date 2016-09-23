@@ -6,6 +6,7 @@ import java.io.IOException;
 
 /**
  * The class to hold the EDF file information.
+ * @author Cristiano Silva Jr. cristianoalvesjr@gmail.com
  */
 public class EDF
 {
@@ -27,6 +28,7 @@ public class EDF
        ############### */
     /**
      * Gets the file path.
+     * @return the file path
      */
     public String getFile()
     {
@@ -89,7 +91,7 @@ public class EDF
     throws IOException
     {
         EDFWriter writer = new EDFWriter();
-        writer.write(what); 
+        writer.write(what);
     }
 
     /**
@@ -164,5 +166,13 @@ public class EDF
     public double getConvertionFactor(String label)
     {
         return reader.getConvertionFactors()[getLabelIndex(label)];
+    }
+
+    /* #################
+       # MAIN FUNCTION #
+       ################# */
+    public static void main(String[] args)
+    {
+        System.out.println("EDF+ interface for Java");
     }
 }
