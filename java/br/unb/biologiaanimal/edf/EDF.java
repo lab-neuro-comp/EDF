@@ -7,6 +7,7 @@ import java.io.IOException;
 /**
  * The class to hold the EDF file information.
  * @author Cristiano Silva Jr. cristianoalvesjr@gmail.com
+ * @version 0.0.1
  */
 public class EDF
 {
@@ -166,13 +167,5 @@ public class EDF
     public double getConvertionFactor(String label)
     {
         return reader.getConvertionFactors()[getLabelIndex(label)];
-    }
-
-    /* #################
-       # MAIN FUNCTION #
-       ################# */
-    public static void main(String[] args)
-    {
-        System.out.println("EDF+ interface for Java");
     }
 }

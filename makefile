@@ -7,7 +7,7 @@ doc:
 	javadoc -d docs $(sourcefiles)
 
 classes:
-	javac -target 1.4 -source 1.4 -nowarn $(sourcefiles)
+	javac -target 1.4 -source 1.4 $(sourcefiles)
 
 test: classes
 	java -cp java $(classname)
