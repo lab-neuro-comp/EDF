@@ -2,6 +2,7 @@ package br.unb.biologiaanimal.edf;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.text.MessageFormat;
 import java.io.IOException;
 
 /**
@@ -100,16 +101,37 @@ public class EDF
      * @param filePath the path to the file to be written.
      */
     public void toAscii(String filePath)
+    throws IOException
     {
-        try {
-            EDFWriter writer = new EDFWriter(filePath);
-            // TODO Write records in the ASCII format
-            writer.write(this.getData());
-            writer.close();
+        EDFWriter writer = new EDFWriter(filePath);
+        String[] labels = reader.getLabels();
+        double[][] signals = new double[labels.length][2];
+        int limit = 0;
+
+        // Getting records
+        for (int i = 0; i < labels.length; ++i)
+        {
+            String label = labels[i];
+            double[] signal = getSignal(label);
+            signals[i] = signal;
+            if (limit < signal.length) {
+                limit = signal.length;
+            }
         }
-        catch (IOException any) {
-            System.out.println(any);
+
+        // TODO Write real numbers into a file
+        for (int i = 0; i < limit; ++i)
+        {
+            for (int j = 0; j < labels.length; ++j)
+            {
+                double[] signal = signals[j];
+                double value = (signal.length > i)? signal[i] : 0;
+                writer.write(value + " ");
+            }
+            writer.write("\n");
         }
+
+        writer.close();
     }
 
     // TODO Enable EDF file to be written in the standard output formats
@@ -121,20 +143,18 @@ public class EDF
     public void toSingleChannelAscii(String filePath, String channel)
     throws IOException
     {
-        String outlet = "";
-        byte[] record = reader.getRecord(channel);
-        short[] data = EDFUtil.translate(record);
-        double convertionFactor = this.getConvertionFactor(channel);
+        double[] signal = getSignal(channel);
         EDFWriter writer = new EDFWriter(filePath);
 
-        for (int i = 0; i < data.length; ++i)
+        for (int i = 0; i < signal.length; ++i)
         {
-            double value = data[i] * convertionFactor;
-            writer.write(value + "\n");
+            writer.write(signal[i] + "\n");
         }
 
         writer.close();
     }
+
+    // TODO Translate data to CSV table
 
     /* ##########################
        # LABEL SPECIFIC METHODS #
@@ -167,5 +187,25 @@ public class EDF
     public double getConvertionFactor(String label)
     {
         return reader.getConvertionFactors()[getLabelIndex(label)];
+    }
+
+    /**
+     * Get a signal based on its label.
+     * @param label the signal label
+     * @return the translated record
+     */
+    public double[] getSignal(String label)
+    {
+        short[] data = EDFUtil.translate(reader.getRecord(label));
+        double convertionFactor = this.getConvertionFactor(label);
+        double[] signal = new double[data.length];
+
+        for (int i = 0; i < data.length; ++i)
+        {
+            signal[i] = data[i] * convertionFactor;
+
+        }
+
+        return signal;
     }
 }

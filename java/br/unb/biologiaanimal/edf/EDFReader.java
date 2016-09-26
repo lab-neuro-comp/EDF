@@ -251,14 +251,14 @@ class EDFReader
 
     private long[] getLimits(String param)
     {
-        String[] stuff = EDFUtil.separateString((String) header.get(param), 
+        String[] stuff = EDFUtil.separateString((String) header.get(param),
                                                 numberSignals);
         long[] outlet = new long[numberSignals];
 
         for (int i = 0; i < numberSignals; ++i)
         {
             outlet[i] = Long.parseLong(stuff[i].trim());
-        } 
+        }
 
         return outlet;
     }
