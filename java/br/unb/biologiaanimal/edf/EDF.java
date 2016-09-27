@@ -96,6 +96,12 @@ public class EDF
         writer.write(what);
     }
 
+    // TODO Enable EDF file to be written in the standard output formats
+    // the standard output formats are:
+    // - Single ASCII matrix
+    // - Multiple ASCII arrays
+    // - CSV table
+
     /**
      * Formats the read records into the ASCII format and saves it into memory.
      * @param filePath the path to the file to be written.
@@ -134,12 +140,12 @@ public class EDF
         writer.close();
     }
 
-    // TODO Enable EDF file to be written in the standard output formats
-    // the standard output formats are:
-    // - Single ASCII matrix
-    // - Multiple ASCII arrays
-    // - CSV table
-
+    /**
+     * Writes a determined record to a file.
+     * @param filePath  the path to the file to be written
+     * @param channel   the label of the record to be saved on memory
+     * @throws java.util.IOException
+     */
     public void toSingleChannelAscii(String filePath, String channel)
     throws IOException
     {
@@ -191,7 +197,7 @@ public class EDF
 
     /**
      * Get a signal based on its label.
-     * @param label the signal label
+     * @param label  the signal label
      * @return the translated record
      */
     public double[] getSignal(String label)
@@ -203,7 +209,6 @@ public class EDF
         for (int i = 0; i < data.length; ++i)
         {
             signal[i] = data[i] * convertionFactor;
-
         }
 
         return signal;
