@@ -1,1 +1,8 @@
 Main-Class: br.unb.biologiaanimal.edf.EDF;
+Name: br/unb/biologiaanimal/edf/
+Specification-Title: "EDF+ format implementation" 
+Specification-Version: "1.1"
+Specification-Vendor: "European Data Format"
+Implementation-Title: "br.unb.biologiaanimal.edf" 
+Implementation-Version: "0.0.1"
+Implementation-Vendor: "Laboratory of Neuroscience and Behavior"

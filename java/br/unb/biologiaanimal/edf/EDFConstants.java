@@ -1,7 +1,5 @@
 package br.unb.biologiaanimal.edf;
 
-import java.util.HashMap;
-
 class EDFConstants
 {
     public static String[] specs = {
