@@ -202,12 +202,17 @@ public class EDF
      */
     public double[] getSignal(String label)
     {
-        short[] data = EDFUtil.translate(reader.getRecord(label));
         double convertionFactor = this.getConvertionFactor(label);
+        short[] raw = EDFUtil.translate(reader.getRecord(label));
+        int[] data = new int[raw.length];
         double[] signal = new double[data.length];
 
         for (int i = 0; i < data.length; ++i)
         {
+            // Shifting signals to get unsigned version
+            data[i] = raw[i] + Short.MAX_VALUE;
+
+            // Converting signals
             signal[i] = data[i] * convertionFactor;
         }
 

@@ -27,12 +27,11 @@ public class Run {
         }
         System.out.println(allLabels);
         System.out.println("--- # Let's write something");
-        System.out.println("-- " + edf.write());
-        System.out.println("-- Writing to ASCII format");
-        System.out.println("-- + Single channel");
+        System.out.println("Writing to ASCII format:");
+        System.out.println("- Single channel");
         try { edf.toSingleChannelAscii("data\\edf\\ECG.ascii", "ECG"); }
         catch (Exception any) { System.out.println(any); }
-        System.out.println("-- + All channels");
+        System.out.println("- All channels");
         try { edf.toAscii("data\\edf\\HCT-4-23.ascii"); }
         catch (Exception any) { System.out.println(any); }
 
