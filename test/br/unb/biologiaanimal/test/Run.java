@@ -23,7 +23,7 @@ public class Run {
         String allLabels = "";
         for (int i = 0; i < labels.length; ++i)
         {
-        	allLabels += "- " + labels[i] + "\n";
+        	allLabels += i + ". " + labels[i] + "\n";
         }
         System.out.println(allLabels);
         System.out.println("--- # Let's write something");
