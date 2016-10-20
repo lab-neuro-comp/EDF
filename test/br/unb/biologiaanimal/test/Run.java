@@ -6,6 +6,7 @@ import br.unb.biologiaanimal.edf.EDFUtil;
 public class Run {
     public static void main(String[] args) {
         System.out.println("--- # Testing utils");
+        System.out.println("Short size: " + Short.SIZE);
         String randomString = "abc efg hij ";
         String[] chopped = EDFUtil.separateString(randomString, 3);
         System.out.println("Separating string:");
@@ -23,14 +24,14 @@ public class Run {
         String allLabels = "";
         for (int i = 0; i < labels.length; ++i)
         {
-        	allLabels += i + ". " + labels[i] + "\n";
+        	allLabels += (i+1) + ". " + labels[i] + "\n";
         }
         System.out.println(allLabels);
         System.out.println("--- # Let's write something");
         System.out.println("-- " + edf.write());
         System.out.println("-- Writing to ASCII format");
         System.out.println("-- + Single channel");
-        try { edf.toSingleChannelAscii("data\\edf\\ECG.ascii", "ECG"); }
+        try { edf.toSingleChannelAscii("data\\edf\\HCT\\ECG.ascii", "ECG"); }
         catch (Exception any) { System.out.println(any); }
         System.out.println("-- + All channels");
         try { edf.toAscii("data\\edf\\HCT-4-23.ascii"); }

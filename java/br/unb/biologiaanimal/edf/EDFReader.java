@@ -224,6 +224,7 @@ class EDFReader
         for (int i = 0; i < numberSignals; ++i)
         {
             outlet[i] = EDFUtil.convert(1, dmax[i], dmin[i], pmax[i], pmin[i]);
+            // System.out.println("!! " + i + " " + dmax[i] + " " + dmin[i] + " " + pmax[i] + " " + pmin[i] + " " + outlet[i]);
         }
 
         return outlet;
