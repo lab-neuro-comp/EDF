@@ -207,6 +207,7 @@ public class EDF
         int[] data = new int[raw.length];
         double[] signal = new double[data.length];
 
+        // TODO Fix this convertion
         for (int i = 0; i < data.length; ++i)
         {
             // Shifting signals to get unsigned version
