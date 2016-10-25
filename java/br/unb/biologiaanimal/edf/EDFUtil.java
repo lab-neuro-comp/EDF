@@ -1,6 +1,7 @@
 package br.unb.biologiaanimal.edf;
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class EDFUtil
 {
@@ -84,10 +85,12 @@ public class EDFUtil
      */
     public static short[] translate(byte[] inlet)
     {
+		// TODO Is this byte buffer little endian or big endian?
         ByteBuffer buffer = ByteBuffer.wrap(inlet);
-        int limit = buffer.remaining()/2;
+        int limit = inlet.length/2;
         short[] outlet = new short[limit];
 
+		buffer = buffer.order(ByteOrder.LITTLE_ENDIAN);
         for (int i = 0; i < limit; ++i)
         {
             outlet[i] = buffer.getShort();

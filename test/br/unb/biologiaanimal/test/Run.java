@@ -6,12 +6,13 @@ import br.unb.biologiaanimal.edf.EDFUtil;
 public class Run {
     public static void main(String[] args) {
         System.out.println("--- # Testing utils");
+        System.out.println("Short size: " + Short.SIZE);
         String randomString = "abc efg hij ";
         String[] chopped = EDFUtil.separateString(randomString, 3);
         System.out.println("Separating string:");
         for (int i = 0; i < 3; ++i)
         {
-        	System.out.println("- " + chopped[i]);
+            System.out.println("- " + chopped[i]);
         }
         System.out.println("25 celsius to fahrenheit:");
         System.out.println("  Ans: " + EDFUtil.map(25, 100, 0, 212, 32) + "F");
@@ -23,15 +24,16 @@ public class Run {
         String allLabels = "";
         for (int i = 0; i < labels.length; ++i)
         {
-        	allLabels += i + ". " + labels[i] + "\n";
+            allLabels += (i+1) + ". " + labels[i] + "\n";
         }
         System.out.println(allLabels);
         System.out.println("--- # Let's write something");
-        System.out.println("Writing to ASCII format:");
-        System.out.println("- Single channel");
-        try { edf.toSingleChannelAscii("data\\edf\\ECG.ascii", "ECG"); }
+        System.out.println("-- " + edf.write());
+        System.out.println("-- Writing to ASCII format");
+        System.out.println("-- + Single channel");
+        try { edf.toSingleChannelAscii("data\\edf\\HCT\\ECG.ascii", "ECG"); }
         catch (Exception any) { System.out.println(any); }
-        System.out.println("- All channels");
+        System.out.println("-- + All channels");
         try { edf.toAscii("data\\edf\\HCT-4-23.ascii"); }
         catch (Exception any) { System.out.println(any); }
 
