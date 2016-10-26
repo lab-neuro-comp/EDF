@@ -74,11 +74,22 @@ public class EDF
     }
 
     /**
-     * Get the labels contained in this EDF file
+     * Get the labels contained in this EDF file.
      */
     public String[] getLabels()
     {
         return reader.getLabels();
+    }
+
+    /**
+     * Gets the sampling rate of the recording.
+     */
+    public int getSamplingRate()
+    {
+        int numberSignals = reader.getNumberSignals();
+        String raw = (String) getHeader().get("samplesrecord");
+        String[] samples = EDFUtil.separateString(raw, numberSignals);
+        return Integer.parseInt(samples[0].trim());
     }
 
     /* ###################

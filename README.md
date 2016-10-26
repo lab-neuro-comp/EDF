@@ -13,6 +13,6 @@ TODO List
 ---------
 
 - [x] Translate EDF data to a single ASCII file
-- [ ] Translate EDF data to multiple ASCII files
+- [x] Translate EDF data to multiple ASCII files
 - [ ] Translate EDF data to a CSV table
 - [ ] Extract annotations to a table

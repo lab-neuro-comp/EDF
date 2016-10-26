@@ -19,6 +19,7 @@ public class Run {
         System.out.println("--- # Reading EDF file");
         EDF edf = new EDF("data\\edf\\HCT-4-23.edf");
         System.out.println("File: " + edf.getFile());
+        System.out.println("Sampling rate: " + edf.getSamplingRate());
         System.out.println("Labels:");
         String[] labels = edf.getLabels();
         String allLabels = "";
