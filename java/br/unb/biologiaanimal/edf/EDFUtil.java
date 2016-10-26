@@ -85,7 +85,6 @@ public class EDFUtil
      */
     public static short[] translate(byte[] inlet)
     {
-		// TODO Is this byte buffer little endian or big endian?
         ByteBuffer buffer = ByteBuffer.wrap(inlet);
         int limit = inlet.length/2;
         short[] outlet = new short[limit];

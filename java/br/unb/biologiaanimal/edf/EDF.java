@@ -84,7 +84,7 @@ public class EDF
     /* ###################
        # WRITING METHODS #
        ################### */
-    public String write()
+    public String sayHi()
     {
         return EDFWriter.sayHi();
     }
@@ -95,12 +95,6 @@ public class EDF
         EDFWriter writer = new EDFWriter();
         writer.write(what);
     }
-
-    // TODO Enable EDF file to be written in the standard output formats
-    // the standard output formats are:
-    // - Single ASCII matrix
-    // - Multiple ASCII arrays
-    // - CSV table
 
     /**
      * Formats the read records into the ASCII format and saves it into memory.
@@ -125,7 +119,7 @@ public class EDF
             }
         }
 
-        // TODO Write real numbers into a file
+        // Writiing numbers into file
         for (int i = 0; i < limit; ++i)
         {
             for (int j = 0; j < labels.length; ++j)
@@ -161,6 +155,57 @@ public class EDF
     }
 
     // TODO Translate data to CSV table
+    /**
+     * Translated the loaded EDF file into a CSV table
+     */
+    public void toCsv(String filePath)
+    throws IOException
+    {
+        EDFWriter writer = new EDFWriter(filePath);
+        String[] labels = reader.getLabels();
+        double[][] signals = new double[labels.length][2];
+        HashMap header = reader.getHeader();
+        int limit = 0;
+
+        // TODO Generate header
+        writer.write("title:" + (String) header.get("title") + ";");
+        // TODO Get recording time info
+        // TODO Get sampling
+        writer.write("subject:" + (String) header.get("patient") + ";");
+        // TODO Get labels
+        // TODO Get how many channels there are
+        // TODO Get units
+        writer.write("\n");
+
+        // TODO Write channels
+        // Getting records
+        for (int i = 0; i < labels.length; ++i)
+        {
+            String label = labels[i];
+            double[] signal = getSignal(label);
+            signals[i] = signal;
+            if (limit < signal.length) {
+                limit = signal.length;
+            }
+        }
+
+        // Writiing numbers into file
+        for (int i = 0; i < limit; ++i)
+        {
+            for (int j = 0; j < labels.length; ++j)
+            {
+                // TODO Get annotations channel
+                if (true) {
+                    double[] signal = signals[j];
+                    double value = (signal.length > i)? signal[i] : 0;
+                    writer.write(((j == 0)? "" : "; ") + value);
+                }
+            }
+            writer.write("\n");
+        }
+
+        writer.close();
+    }
 
     /* ##########################
        # LABEL SPECIFIC METHODS #

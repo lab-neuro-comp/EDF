@@ -12,7 +12,7 @@ which will provide an interface with EDF files for the Java programming language
 TODO List
 ---------
 
-- [ ] Translate EDF data to a single ASCII file
+- [x] Translate EDF data to a single ASCII file
 - [ ] Translate EDF data to multiple ASCII files
 - [ ] Translate EDF data to a CSV table
 - [ ] Extract annotations to a table

@@ -263,6 +263,4 @@ class EDFReader
 
         return outlet;
     }
-
-    // TODO Add method to get each signal by their label
 }
