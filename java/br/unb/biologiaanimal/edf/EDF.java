@@ -179,12 +179,13 @@ public class EDF
         int limit = 0;
 
         // TODO Generate header
-        writer.write("title:" + (String) header.get("title") + ";");
-        // TODO Get recording time info
+        writer.write("title:" + (String) header.get("recording") + ";");
+        writer.write("recorded:" + (String) header.get("startdate") + " " +
+                                   (String) header.get("starttime") + ";");
         // TODO Get sampling
         writer.write("subject:" + (String) header.get("patient") + ";");
         // TODO Get labels
-        // TODO Get how many channels there are
+        writer.write("chan:" + (String) header.get("numbersignals") + ";");
         // TODO Get units
         writer.write("\n");
 
