@@ -207,7 +207,7 @@ public class EDF
             for (int j = 0; j < labels.length; ++j)
             {
                 // TODO Get annotations channel
-                if (true) {
+                if (j != reader.getAnnotationsChannelIndex()) {
                     double[] signal = signals[j];
                     double value = (signal.length > i)? signal[i] : 0;
                     writer.write(((j == 0)? "" : "; ") + value);

@@ -188,6 +188,25 @@ class EDFReader
        # TRANSLATION METHODS #
        ####################### */
 
+    /**
+     * Gets the index of the annotations channel.
+     * @return The assessed index of the channel, or -1 if not found.
+     */
+    public int getAnnotationsChannelIndex()
+    {
+        String[] labels = this.getLabels();
+        int limit = this.getNumberSignals();
+
+        for (int index = 0; index < limit; index++)
+        {
+            if (labels[index].equals("EDF Annotations")) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
     public int getNumberSignals()
     {
         return paramToInt("numbersignals");
