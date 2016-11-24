@@ -189,7 +189,6 @@ public class EDF
         // TODO Get units
         writer.write("\n");
 
-        // TODO Write channels
         // Getting records
         for (int i = 0; i < labels.length; ++i)
         {
@@ -206,7 +205,6 @@ public class EDF
         {
             for (int j = 0; j < labels.length; ++j)
             {
-                // TODO Get annotations channel
                 if (j != reader.getAnnotationsChannelIndex()) {
                     double[] signal = signals[j];
                     double value = (signal.length > i)? signal[i] : 0;
