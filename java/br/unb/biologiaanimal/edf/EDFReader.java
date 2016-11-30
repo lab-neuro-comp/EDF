@@ -283,7 +283,6 @@ class EDFReader
         return outlet;
     }
 
-    // TODO Get annotations
     /**
      * Gets a list of the annotations on the EDF file, lest there are
      * annotations.

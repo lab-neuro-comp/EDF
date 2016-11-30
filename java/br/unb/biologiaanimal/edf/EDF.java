@@ -217,7 +217,6 @@ public class EDF
         writer.close();
     }
 
-    // TODO Read annotations
     /**
      * Gets a list of the annotations on the EDF file, lest there are
      * annotations.
