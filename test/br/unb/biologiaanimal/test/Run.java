@@ -40,6 +40,19 @@ public class Run {
         System.out.println("-- + To CSV");
         try { edf.toCsv("data\\edf\\HCT-4-23.java.ascii"); }
         catch (Exception any) { System.out.println(any); }
+        System.out.println("-- + Getting annotations");
+        try
+        {
+            String[] annotations = edf.getAnnotations();
+            for (int i = 0; i < annotations.length; ++i)
+            {
+                System.out.println("- " + annotations[i]);
+            }
+        }
+        catch (Exception any)
+        {
+            System.out.println(any);
+        }
 
         System.out.println("...");
     }

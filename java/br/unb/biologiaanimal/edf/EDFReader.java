@@ -271,8 +271,8 @@ class EDFReader
 
     private long[] getLimits(String param)
     {
-        String[] stuff = EDFUtil.separateString((String) header.get(param),
-                                                numberSignals);
+        String rawLimits = (String) header.get(param);
+        String[] stuff = EDFUtil.separateString(rawLimits, numberSignals);
         long[] outlet = new long[numberSignals];
 
         for (int i = 0; i < numberSignals; ++i)
@@ -281,5 +281,11 @@ class EDFReader
         }
 
         return outlet;
+    }
+
+    // TODO Get annotations
+    public String[] getAnnotations()
+    {
+        throw new UnsupportedOperationException();
     }
 }

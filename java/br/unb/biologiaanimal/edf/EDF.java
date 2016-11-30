@@ -217,6 +217,12 @@ public class EDF
         writer.close();
     }
 
+    // TODO Read annotations
+    public String[] getAnnotations()
+    {
+        return reader.getAnnotations();
+    }
+
     /* ##########################
        # LABEL SPECIFIC METHODS #
        ########################## */
