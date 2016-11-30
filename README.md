@@ -1,18 +1,13 @@
 # Java support to EDF files
 
-Our goal is to implement this package:
+The repository implements the following package:
 
 ``` java
 package br.unb.biologiaanimal.edf;
 ```
 
-which will provide an interface with EDF files for the Java programming language, so we can use them in our MATLAB applications in this lab.
+which provides an interface with EDF files for the Java programming language, so we can use them in our MATLAB applications. The produced Jar file enables the deconstruction of an EDF file into its header and its records; so the raw records can be directly accessed or translated to ASCII friendly formats.
 
+Although it is already being used, this code is work in progress and shall be used carefully.
 
-TODO List
----------
-
-- [x] Translate EDF data to a single ASCII file
-- [x] Translate EDF data to multiple ASCII files
-- [ ] Translate EDF data to a CSV table
-- [ ] Extract annotations to a table
+Help and ideas are always welcome! `:)`
