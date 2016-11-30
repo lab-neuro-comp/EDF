@@ -218,7 +218,14 @@ public class EDF
     }
 
     // TODO Read annotations
+    /**
+     * Gets a list of the annotations on the EDF file, lest there are
+     * annotations.
+     * @return An array containing one annotation for each entry
+     * @throws NoSuchFieldException
+     */
     public String[] getAnnotations()
+    throws NoSuchFieldException
     {
         return reader.getAnnotations();
     }

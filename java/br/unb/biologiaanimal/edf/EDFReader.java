@@ -284,8 +284,50 @@ class EDFReader
     }
 
     // TODO Get annotations
+    /**
+     * Gets a list of the annotations on the EDF file, lest there are
+     * annotations.
+     * @return An array containing one annotation for each entry
+     * @throws NoSuchFieldException
+     */
     public String[] getAnnotations()
+    throws NoSuchFieldException
     {
-        throw new UnsupportedOperationException();
+        int annotationsChannel = getAnnotationsChannelIndex();
+
+        if (annotationsChannel < 0) {
+            throw new NoSuchFieldException();
+        }
+
+        return getRawNotes().split("\n");
+    }
+
+    private String getRawNotes()
+    {
+        byte[] raw = this.getRecord("EDF Annotations");
+        String outlet = "";
+        boolean inside = false;
+
+        for (int i = 0; i < raw.length; ++i)
+        {
+            if (inside) {
+                if (raw[i] == 0) {
+                    inside = false;
+                    outlet += "\n";
+                }
+                else {
+                    byte it = raw[i];
+                    boolean fact = (it == (byte) 20) || (it == (byte) 21);
+                    raw[i] = (fact)? (byte) ' ' : it;
+                    outlet += (char) raw[i];
+                }
+            }
+            else if (raw[i] == '+' || raw[i] == '-') {
+                inside = true;
+                outlet += (char) raw[i];
+            }
+        }
+
+        return outlet;
     }
 }
