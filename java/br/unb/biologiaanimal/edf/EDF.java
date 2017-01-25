@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * The class to hold the EDF file information.
  * @author Cristiano Silva Jr. cristianoalvesjr@gmail.com
- * @version 0.0.1
+ * @version 0.2.0
  */
 public class EDF
 {
