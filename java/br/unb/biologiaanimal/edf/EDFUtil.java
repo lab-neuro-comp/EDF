@@ -135,4 +135,8 @@ public class EDFUtil
     }
 
 
+	/* ###################
+	   # Whole EDF stuff #
+	   ################### */
+	// TODO Implement a function to generate a map with every channel without loading everything into memory.
 }
