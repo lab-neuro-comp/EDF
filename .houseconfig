@@ -1,0 +1,9 @@
+{
+	"build": {
+		"command": "make test",
+		"local": true
+	},
+	"edit": {
+		"editor": "atom"
+	}
+}
