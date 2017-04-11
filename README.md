@@ -12,6 +12,18 @@ Although it is already being used, this code is work in progress and shall be us
 
 Help and ideas are always welcome! `:)`
 
+# Getting started
+
+To build this package, run
+
+``` sh
+make
+```
+
+It will generate an `edf.jar` file on the `target` folder. This Jarfile can be included in your application wherever needed.
+
+# Library
+
 ## The `EDF` class ##
 
 Those are the currently available methods for this class.
@@ -72,3 +84,13 @@ This is the constructor. It requires a string that describes the path to the
 * Get a signal based on its label.
 * Parameter `label`: the signal label.
 * Returns the translated record.
+
+## The `EDFUtil` class
+
+Mostly holds some utility functions to help with EDF processing.
+
+### Methods
+
+#### `public static String[] separateString(String inlet, int numChops)`
+
+* Separates a string into equal length chops.
