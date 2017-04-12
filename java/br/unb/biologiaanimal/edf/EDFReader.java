@@ -68,7 +68,7 @@ class EDFReader
             for (int n = 0; n < numberSignals; ++n)
             {
                 stream.read(buffer);
-                box.append(String(buffer));
+                box.append(new String(buffer));
             }
             header.put(EDFConstants.specs[i], box.toString());
         }
@@ -105,6 +105,7 @@ class EDFReader
                 duration = 2 * sampling[i];
                 buffer = new byte[duration];
                 stream.read(buffer);
+                // TODO Make this insertion faster. Maybe a queue?
                 recordList[i] = (recordList[i] == null)?
                     buffer :
                     EDFUtil.insert(recordList[i], buffer);
