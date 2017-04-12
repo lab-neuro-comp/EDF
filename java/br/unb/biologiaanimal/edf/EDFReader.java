@@ -64,13 +64,13 @@ class EDFReader
         for (i = i; i < limit; ++i)
         {
             buffer = new byte[EDFConstants.lenghts[i]];
-            data = "";
+            StringBuffer box = new StringBuffer();
             for (int n = 0; n < numberSignals; ++n)
             {
                 stream.read(buffer);
-                data += new String(buffer);
+                box.append(String(buffer));
             }
-            header.put(EDFConstants.specs[i], data);
+            header.put(EDFConstants.specs[i], box.toString());
         }
     }
 
@@ -105,12 +105,9 @@ class EDFReader
                 duration = 2 * sampling[i];
                 buffer = new byte[duration];
                 stream.read(buffer);
-                if (recordList[i] == null) {
-                    recordList[i] = buffer;
-                }
-                else {
-                    recordList[i] = EDFUtil.insert(recordList[i], buffer);
-                }
+                recordList[i] = (recordList[i] == null)?
+                    buffer :
+                    EDFUtil.insert(recordList[i], buffer);
             }
         }
 
