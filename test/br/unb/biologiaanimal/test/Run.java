@@ -52,7 +52,7 @@ public class Run {
         try { edf.toAscii("data\\edf\\HCT-4-23.ascii"); }
         catch (Exception any) { System.out.println(any); }
         System.out.println("-- + To CSV");
-        try { edf.toCsv("data\\edf\\HCT-4-23.java.ascii"); }
+        try { edf.toCsv("data\\edf\\HCT-4-23.java.csv"); }
         catch (Exception any) { System.out.println(any); }
 
         System.out.println("...");

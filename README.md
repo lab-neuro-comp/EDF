@@ -22,6 +22,12 @@ make
 
 It will generate an `edf.jar` file on the `target` folder. This Jarfile can be included in your application wherever needed.
 
+## Development ##
+
+The current workings of JEDF are destined to a `v0.3`, which must save the EDF file to the CSV format, mimicking [the analogous Golang implementation of this package](https://github.com/ishiikurisu/edf). `v0.4` must be able to convert the EDF both to CSV and back to the EDF format, so the programmer can make changes on the EDF file and save it back to later concerns.
+
+Future ideas include the implementation of a on-time access to the data: the `EDF` class would know where to find certain parts of the file and load them whenever needed instead of storing the whole file's contents on RAM memory.
+
 # Library
 
 ## The `EDF` class ##
