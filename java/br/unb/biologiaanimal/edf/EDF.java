@@ -2,13 +2,12 @@ package br.unb.biologiaanimal.edf;
 
 import java.util.HashMap;
 import java.util.Set;
-import java.text.MessageFormat;
 import java.io.IOException;
 
 /**
  * The class to hold the EDF file information.
  * @author Cristiano Silva Jr. cristianoalvesjr@gmail.com
- * @version 0.2.0
+ * @version 0.3.0
  */
 public class EDF
 {
@@ -150,7 +149,7 @@ public class EDF
      * Writes a determined record to a file.
      * @param filePath  the path to the file to be written
      * @param channel   the label of the record to be saved on memory
-     * @throws java.util.IOException
+     * @throws java.io.IOException
      */
     public void toSingleChannelAscii(String filePath, String channel)
     throws IOException
@@ -166,9 +165,10 @@ public class EDF
         writer.close();
     }
 
-    // TODO Translate data to CSV table
     /**
      * Translated the loaded EDF file into a CSV table
+     * @param filePath the file name on which the data must be saved
+     * @throws java.io.IOException
      */
     public void toCsv(String filePath)
     throws IOException
@@ -184,7 +184,6 @@ public class EDF
                                    (String) header.get("starttime") + ";");
         writer.write("sampling:" + Integer.toString(getSamplingRate()) + ";");
         writer.write("subject:" + (String) header.get("patient") + ";");
-        // TODO Get labels
         writer.write("labels:" + EDFUtil.joinStrings(getLabels(), "\t") + ";");
         writer.write("chan:" + (String) header.get("numbersignals") + ";");
         // TODO Get units

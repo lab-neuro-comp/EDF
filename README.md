@@ -24,7 +24,7 @@ It will generate an `edf.jar` file on the `target` folder. This Jarfile can be i
 
 ## Development ##
 
-The current workings of JEDF are destined to a `v0.3`, which must save the EDF file to the CSV format, mimicking [the analogous Golang implementation of this package](https://github.com/ishiikurisu/edf). `v0.4` must be able to convert the EDF both to CSV and back to the EDF format, so the programmer can make changes on the EDF file and save it back to later concerns.
+The current workings of JEDF are destined to a `v0.4`, which must enable the programmer to convert the EDF both to CSV and back to the EDF format, so they can make changes on the EDF file and save it back to later concerns.
 
 Future ideas include the implementation of a on-time access to the data: the `EDF` class would know where to find certain parts of the file and load them whenever needed instead of storing the whole file's contents on RAM memory.
 
@@ -36,60 +36,65 @@ Those are the currently available methods for this class.
 
 ### Methods ###
 
-#### `public EDF(String filePath)` ####
+#### `EDF(String filePath)` ####
 
-This is the constructor. It requires a string that describes the path to the
+This is the constructor. It requires a string that describes the path to the EDF file.
 
-#### `public String getFile()` ####
+#### `String getFile()` ####
 
 - Gets the file path.
 - Return: the file path;
 
-#### `public HashMap getHeader()` ####
+#### `HashMap getHeader()` ####
 
 - Gets raw EDF header.
 
-#### `public HashMap getRecords()` ####
+#### `HashMap getRecords()` ####
 
 - Gets raw EDF records
 
-#### `public String[] getLabels()` ####
+#### `String[] getLabels()` ####
 
 - Get the labels contained in this EDF file.
 
-#### `public int getSamplingRate()` ####
+#### `int getSamplingRate()` ####
 
 - Gets the sampling rate of the recording.
 
 
-#### `public void toAscii(String filePath) throws IOException` ####
+#### `void toAscii(String filePath) throws IOException` ####
 
 - Formats the read records into the ASCII format and saves it into memory.
 - Paramter `filePath`: the path to the file to be written.
 
-#### `public void toSingleChannelAscii(String filePath, String channel) throws IOException` ####
+#### `void toSingleChannelAscii(String filePath, String channel) throws IOException` ####
 
 * Writes a determined record to a file.
 * Parameter `filePath`: the path to the file to be written
 * Parameter `channel`: the label of the record to be saved on memory
 
 
-#### `public String[] getAnnotations() throws NoSuchFieldException` ####
+#### `String[] getAnnotations() throws NoSuchFieldException` ####
 
 * Gets a list of the annotations on the EDF file, lest there are annotations.
 * Returns an array containing one annotation for each entry.
 
-#### `public double getConvertionFactor(String label)` ####
+#### `double getConvertionFactor(String label)` ####
 
 * Gets the convertion factor related to the given label
-* Paramter `label`: the channel's label whose convertion factor we want
+* Parameter `label`: the channel's label whose convertion factor we want
 * Returns the convertion factor.
 
-#### `public double[] getSignal(String label)` ####
+#### `double[] getSignal(String label)` ####
 
 * Get a signal based on its label.
 * Parameter `label`: the signal label.
 * Returns the translated record.
+
+#### `void toCsv(String filePath) throws IOException` ####
+
+* Translates the loaded EDF file into a CSV table.
+* Parameter `filePath`: the file name on which the data must be saved
 
 ## The `EDFUtil` class
 
@@ -97,6 +102,13 @@ Mostly holds some utility functions to help with EDF processing.
 
 ### Methods
 
-#### `public static String[] separateString(String inlet, int numChops)`
+#### `static String[] separateString(String inlet, int numChops)`
 
 * Separates a string into equal length chops.
+
+#### `static String joinStrings(String[] inlet, String sep)` ####
+
+* Creates a new string uniting strings with a separator in the middle.
+* Parameter `inlet`: the String array to be united.
+* Parameter `sep`: the String that will appear in the middle of the other strings.
+* Returns the united string.
