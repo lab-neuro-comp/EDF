@@ -183,11 +183,12 @@ public class EDF
         writer.write("recorded:" + (String) header.get("startdate") + " " +
                                    (String) header.get("starttime") + ";");
         // TODO Get sampling
+        writer.write("sampling:" + Integer.toString(getSamplingRate()) + ";");
         writer.write("subject:" + (String) header.get("patient") + ";");
         // TODO Get labels
         writer.write("chan:" + (String) header.get("numbersignals") + ";");
         // TODO Get units
-        writer.write("\n");
+        writer.write("units:uV\n");
 
         // Getting records
         for (int i = 0; i < labels.length; ++i)
@@ -208,7 +209,7 @@ public class EDF
                 if (j != reader.getAnnotationsChannelIndex()) {
                     double[] signal = signals[j];
                     double value = (signal.length > i)? signal[i] : 0;
-                    writer.write(((j == 0)? "" : "; ") + value);
+                    writer.write(((j == 0)? "" : "; ") + Double.toString(value));
                 }
             }
             writer.write("\n");
