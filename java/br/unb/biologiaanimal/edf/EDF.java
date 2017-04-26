@@ -75,6 +75,7 @@ public class EDF
 
     /**
      * Get the labels contained in this EDF file.
+     * @return the trimmed labels from the header
      */
     public String[] getLabels()
     {
@@ -178,14 +179,13 @@ public class EDF
         HashMap header = reader.getHeader();
         int limit = 0;
 
-        // TODO Generate header
         writer.write("title:" + (String) header.get("recording") + ";");
         writer.write("recorded:" + (String) header.get("startdate") + " " +
                                    (String) header.get("starttime") + ";");
-        // TODO Get sampling
         writer.write("sampling:" + Integer.toString(getSamplingRate()) + ";");
         writer.write("subject:" + (String) header.get("patient") + ";");
         // TODO Get labels
+        writer.write("labels:" + EDFUtil.joinStrings(getLabels(), "\t") + ";");
         writer.write("chan:" + (String) header.get("numbersignals") + ";");
         // TODO Get units
         writer.write("units:uV\n");

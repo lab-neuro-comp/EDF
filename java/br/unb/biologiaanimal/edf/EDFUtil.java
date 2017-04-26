@@ -25,6 +25,24 @@ public class EDFUtil
 	}
 
 	/**
+	 * Creates a new string uniting strings with a separator in the middle
+	 * @param inlet  the String array to be united
+	 * @param sep    the String that will appear in the middle of the other strings
+	 * @return  the united string
+	 */
+	public static String joinStrings(String[] inlet, String sep)
+	{
+		String outlet = inlet[0];
+
+		for (int i = 1; i < inlet.length; i++)
+		{
+			outlet += sep + inlet[i];
+		}
+
+		return outlet;
+	}
+
+	/**
 	 * Inserts a byte in a byte array
 	 * @param box  the array to contain the new byte
 	 * @param it   the byte to be added
