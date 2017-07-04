@@ -232,10 +232,10 @@ class EDFReader
      */
     public double[] getConvertionFactors()
     {
-        long[] dmax = getDigitalMaxima();
-        long[] dmin = getDigitalMinima();
-        long[] pmax = getPhysicalMaxima();
-        long[] pmin = getPhysicalMinima();
+        double[] dmax = getDigitalMaxima();
+        double[] dmin = getDigitalMinima();
+        double[] pmax = getPhysicalMaxima();
+        double[] pmin = getPhysicalMinima();
         double[] outlet = new double[numberSignals];
 
         for (int i = 0; i < numberSignals; ++i)
@@ -247,35 +247,35 @@ class EDFReader
         return outlet;
     }
 
-    public long[] getDigitalMaxima()
+    public double[] getDigitalMaxima()
     {
         return getLimits("digitalmaximum");
     }
 
-    public long[] getDigitalMinima()
+    public double[] getDigitalMinima()
     {
         return getLimits("digitalminimum");
     }
 
-    public long[] getPhysicalMaxima()
+    public double[] getPhysicalMaxima()
     {
         return getLimits("physicalmaximum");
     }
 
-    public long[] getPhysicalMinima()
+    public double[] getPhysicalMinima()
     {
         return getLimits("physicalminimum");
     }
 
-    private long[] getLimits(String param)
+    private double[] getLimits(String param)
     {
         String rawLimits = (String) header.get(param);
         String[] stuff = EDFUtil.separateString(rawLimits, numberSignals);
-        long[] outlet = new long[numberSignals];
+        double[] outlet = new double[numberSignals];
 
         for (int i = 0; i < numberSignals; ++i)
         {
-            outlet[i] = Long.parseLong(stuff[i].trim());
+            outlet[i] = Double.parseDouble(stuff[i].trim());
         }
 
         return outlet;
